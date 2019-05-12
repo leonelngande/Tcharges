@@ -1,6 +1,6 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ITariff} from '../models/charge';
-import {MoMoProvider} from '../models/mo-mo-providers';
+import {ITariff} from '../../models/charge';
+import {MoMoProvider} from '../../models/mo-mo-providers';
 
 @Component({
   selector: 'app-charges-display',

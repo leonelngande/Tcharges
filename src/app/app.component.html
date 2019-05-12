@@ -1,7 +1,7 @@
-<ion-app>
+<!--<ion-app>
   <ion-header>
     <ion-toolbar color="primary">
-      <ion-title>MoMoCharges</ion-title>
+      <ion-title>Nadine</ion-title>
       <ion-buttons slot="primary">
         <ion-button>
           <ion-icon slot="icon-only" name="more"></ion-icon>
@@ -20,4 +20,30 @@
 
 
   </ion-content>
+</ion-app>-->
+
+
+<ion-app>
+  <ion-split-pane when="never"> <!-- `never` here is just a random value that seems to work for disabling auto split on large devices -->
+    <ion-menu>
+      <ion-header>
+        <ion-toolbar color="primary">
+          <ion-title>Menu</ion-title>
+        </ion-toolbar>
+      </ion-header>
+      <ion-content>
+        <ion-list>
+          <ion-menu-toggle *ngFor="let p of appPages">
+            <ion-item [routerDirection]="'root'" [routerLink]="[p.url]">
+              <ion-icon slot="start" [name]="p.icon"></ion-icon>
+              <ion-label>
+                {{p.title}}
+              </ion-label>
+            </ion-item>
+          </ion-menu-toggle>
+        </ion-list>
+      </ion-content>
+    </ion-menu>
+    <ion-router-outlet main></ion-router-outlet>
+  </ion-split-pane>
 </ion-app>

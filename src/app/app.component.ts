@@ -18,8 +18,13 @@ export class AppComponent {
     {
       title: 'About',
       url: '/about',
+      icon: 'information-circle-outline'
+    },
+    /*{
+      title: 'List',
+      url: '/list',
       icon: 'info'
-    }
+    },*/
   ];
 
   constructor(

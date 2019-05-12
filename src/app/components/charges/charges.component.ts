@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MoMoProvider, MoMoProviders} from '../models/mo-mo-providers';
-import {ITariff, MtnTariffs} from '../models/charge';
+import {MoMoProvider, MoMoProviders} from '../../models/mo-mo-providers';
+import {ITariff, MtnTariffs} from '../../models/charge';
 
 @Component({
   selector: 'app-charges',
