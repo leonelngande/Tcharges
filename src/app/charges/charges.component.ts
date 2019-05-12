@@ -22,7 +22,6 @@ export class ChargesComponent implements OnInit {
     }
     return provider;
   });
-  activeProvider: MoMoProvider;
 
   // tslint:disable-next-line:variable-name
   private _activeTariff: ITariff;
@@ -65,10 +64,9 @@ export class ChargesComponent implements OnInit {
   }
 
   getTariff(formData) {
-    // update the active provider
-    this.activeProvider = formData.provider;
-    let tariffsList: ITariff[];
+    this.resetActiveTariff();
 
+    let tariffsList: ITariff[];
     switch (formData.provider) {
       case MoMoProvider.MTN:
         tariffsList = MtnTariffs;
@@ -93,5 +91,9 @@ export class ChargesComponent implements OnInit {
     return tariffsList.find(tariff => {
       return amount >= tariff.low && amount <= tariff.high;
     });
+  }
+
+  private resetActiveTariff() {
+    this.activeTariff = null;
   }
 }

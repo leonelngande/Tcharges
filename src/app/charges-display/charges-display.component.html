@@ -1,4 +1,4 @@
-<ng-container *ngIf="tariff">
+<ng-container *ngIf="tariff && tariff.high && amount">
 
   <ion-list lines="none">
     <ion-item>
@@ -8,7 +8,7 @@
 
       <ng-container [ngSwitch]="tariff.intra.type">
         <ng-container *ngSwitchCase="'percentage'">
-          {{tariff.intra.chargeFromAmount(500)}} &nbsp;<small>XAF</small>
+          {{tariff.intra.chargeFromAmount(amount)}} &nbsp;<small>XAF</small>
         </ng-container>
         <ng-container *ngSwitchCase="'amount'">
           {{tariff.intra.value}} &nbsp;<small>XAF</small>
@@ -17,7 +17,7 @@
           N/A
         </ng-container>
       </ng-container>
-<!--      {{tariff.intra.type === 'percentage' ? tariff.intra.chargeFromAmount(500) : tariff.intra.value}}-->
+<!--      {{tariff.intra.type === 'percentage' ? tariff.intra.chargeFromAmount(amount) : tariff.intra.value}}-->
     </ion-item>
 
     <ion-item>
@@ -26,7 +26,7 @@
       </ion-label>
       <ng-container [ngSwitch]="tariff.inter.type">
         <ng-container *ngSwitchCase="'percentage'">
-          {{tariff.inter.chargeFromAmount(500)}} &nbsp;<small>XAF</small>
+          {{tariff.inter.chargeFromAmount(amount)}} &nbsp;<small>XAF</small>
         </ng-container>
         <ng-container *ngSwitchCase="'amount'">
           {{tariff.inter.value}} &nbsp;<small>XAF</small>
@@ -41,7 +41,7 @@
       <ion-label>Withdrawal</ion-label>
       <ng-container [ngSwitch]="tariff.withdrawal.type">
         <ng-container *ngSwitchCase="'percentage'">
-          {{tariff.withdrawal.chargeFromAmount(500)}} &nbsp;<small>XAF</small>
+          {{tariff.withdrawal.chargeFromAmount(amount)}} &nbsp;<small>XAF</small>
         </ng-container>
         <ng-container *ngSwitchCase="'amount'">
           {{tariff.withdrawal.value}} &nbsp;<small>XAF</small>

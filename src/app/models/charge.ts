@@ -14,17 +14,13 @@ export interface ITariff {
     withdrawal: ICharge;
 }
 
-export const chargeAmountFromPercent = (percent: number, amount: number) => {
-    return amount * percent;
-};
-
 export type ChargeType = 'amount' | 'percentage' | 'unknown';
 
 const percentCharge = (value: number): ICharge => {
     return {
         type: 'percentage',
         value: value / 100,
-        chargeFromAmount: function(amount: number) {
+        chargeFromAmount(amount: number) {
             return this.value * amount;
         },
     };

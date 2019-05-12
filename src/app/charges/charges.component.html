@@ -68,8 +68,10 @@
     </ion-row>
 
     <ion-row>
-      <ion-col>
-        <app-charges-display [tariff]="activeTariff" [provider]="activeProvider"></app-charges-display>
+      <ion-col sizeMd="3" offsetMd="4" text-center>
+        <app-charges-display [tariff]="activeTariff"
+                             [amount]="amount.value"
+                             [provider]="provider.value"></app-charges-display>
       </ion-col>
     </ion-row>
 

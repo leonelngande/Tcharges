@@ -11,12 +11,13 @@ export class ChargesDisplayComponent implements OnInit {
 
   _tariff: ITariff;
   @Input() set tariff(tariff: ITariff) {
-    this._tariff = tariff;
+    this._tariff = {...tariff};
   }
   get tariff() {
     return this._tariff;
   }
   @Input() provider: MoMoProvider;
+  @Input() amount: number;
 
   constructor() { }
 
