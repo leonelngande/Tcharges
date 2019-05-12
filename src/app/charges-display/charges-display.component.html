@@ -1,0 +1,56 @@
+<ng-container *ngIf="tariff">
+
+  <ion-list lines="none">
+    <ion-item>
+      <ion-label>
+        {{provider | uppercase}} <ion-icon name="arrow-forward"></ion-icon> {{provider | uppercase}}
+      </ion-label>
+
+      <ng-container [ngSwitch]="tariff.intra.type">
+        <ng-container *ngSwitchCase="'percentage'">
+          {{tariff.intra.chargeFromAmount(500)}} &nbsp;<small>XAF</small>
+        </ng-container>
+        <ng-container *ngSwitchCase="'amount'">
+          {{tariff.intra.value}} &nbsp;<small>XAF</small>
+        </ng-container>
+        <ng-container *ngSwitchCase="'unknown'">
+          N/A
+        </ng-container>
+      </ng-container>
+<!--      {{tariff.intra.type === 'percentage' ? tariff.intra.chargeFromAmount(500) : tariff.intra.value}}-->
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        {{provider | uppercase}} <ion-icon name="arrow-forward"></ion-icon> Other
+      </ion-label>
+      <ng-container [ngSwitch]="tariff.inter.type">
+        <ng-container *ngSwitchCase="'percentage'">
+          {{tariff.inter.chargeFromAmount(500)}} &nbsp;<small>XAF</small>
+        </ng-container>
+        <ng-container *ngSwitchCase="'amount'">
+          {{tariff.inter.value}} &nbsp;<small>XAF</small>
+        </ng-container>
+        <ng-container *ngSwitchCase="'unknown'">
+          N/A
+        </ng-container>
+      </ng-container>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Withdrawal</ion-label>
+      <ng-container [ngSwitch]="tariff.withdrawal.type">
+        <ng-container *ngSwitchCase="'percentage'">
+          {{tariff.withdrawal.chargeFromAmount(500)}} &nbsp;<small>XAF</small>
+        </ng-container>
+        <ng-container *ngSwitchCase="'amount'">
+          {{tariff.withdrawal.value}} &nbsp;<small>XAF</small>
+        </ng-container>
+        <ng-container *ngSwitchCase="'unknown'">
+          N/A
+        </ng-container>
+      </ng-container>
+    </ion-item>
+  </ion-list>
+
+</ng-container>

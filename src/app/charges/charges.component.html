@@ -1,0 +1,78 @@
+<ion-grid>
+
+  <ion-row>
+    <ion-col sizeMd="3" offsetMd="4">
+      <ion-list-header>Mobile Money Charges Calculator</ion-list-header>
+    </ion-col>
+  </ion-row>
+
+  <form novalidate [formGroup]="form" (submit)="getTariff(form.value)">
+
+    <div *ngIf="showMessages.error && errors && errors.length > 0 && !submitted"
+         class="alert alert-danger" role="alert">
+      <div><strong i18n="@@ohSnapFailure">Oops!</strong></div>
+      <div *ngFor="let error of errors">{{ error }}</div>
+    </div>
+    <div *ngIf="showMessages.success && messages && messages.length > 0 && !submitted"
+         class="alert alert-success" role="alert">
+      <div><strong i18n="@@hooraySuccess">Success!</strong></div>
+      <div *ngFor="let message of messages">{{ message }}</div>
+    </div>
+
+    <ion-row>
+      <ion-col sizeMd="3" offsetMd="4">
+        <ion-item>
+          <ion-label>Provider</ion-label>
+          <ion-select placeholder="Select provider" formControlName="provider">
+            <ion-select-option value="mtn">MTN</ion-select-option>
+            <ion-select-option value="orange">Orange</ion-select-option>
+            <ion-select-option value="eu">Express Union</ion-select-option>
+          </ion-select>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.provider">
+            <div class="error-message" *ngIf="provider.hasError(validation.type) && (provider.dirty || provider.touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col sizeMd="3" offsetMd="4">
+        <ion-item>
+          <ion-label>Amount</ion-label>
+          <ion-input type="number" formControlName="amount"></ion-input>
+        </ion-item>
+        <div class="validation-errors">
+          <ng-container *ngFor="let validation of validationMessages.amount">
+            <div class="error-message" *ngIf="amount.hasError(validation.type) && (amount.dirty || amount.touched)">
+              {{ validation.message }}
+            </div>
+          </ng-container>
+        </div>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col sizeMd="3" offsetMd="4" text-center>
+        <br>
+        <ion-button [disabled]="!form.valid || submitted"
+                    type="submit"
+                    shape="round"
+                    fill="outline">
+          Calculate
+        </ion-button>
+      </ion-col>
+    </ion-row>
+
+    <ion-row>
+      <ion-col>
+        <app-charges-display [tariff]="activeTariff" [provider]="activeProvider"></app-charges-display>
+      </ion-col>
+    </ion-row>
+
+  </form>
+
+</ion-grid>

@@ -8,14 +8,21 @@ import { StatusBar } from '@ionic-native/status-bar/ngx';
 
 import { AppComponent } from './app.component';
 import { AppRoutingModule } from './app-routing.module';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
+import {ChargesComponent} from './charges/charges.component';
+import {ReactiveFormsModule} from '@angular/forms';
+import {ChargesDisplayComponent} from './charges-display/charges-display.component';
 
 @NgModule({
-  declarations: [AppComponent],
+  declarations: [AppComponent, ChargesComponent, ChargesDisplayComponent],
   entryComponents: [],
   imports: [
     BrowserModule,
+      ReactiveFormsModule,
     IonicModule.forRoot(),
-    AppRoutingModule
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [
     StatusBar,
