@@ -1,8 +1,9 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit, Provider} from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
 import {MoMoProvider, moMoProviders} from '../../models/mo-mo-providers';
 import {expressUnionTariffs, ITariff, mtnTariffs, orangeTariffs} from '../../models/charge';
 import {takeWhile} from 'rxjs/operators';
+import {GoogleAnalyticsService} from '../../services/google-analytics/google-analytics.service';
 
 @Component({
   selector: 'app-charges',
@@ -46,7 +47,10 @@ export class ChargesComponent implements OnInit {
     ],
   };
 
-  constructor(private fb: FormBuilder) { }
+  constructor(
+      private fb: FormBuilder,
+      public analyticsService: GoogleAnalyticsService,
+  ) { }
 
   ngOnInit() {
     this.initForm();
@@ -102,6 +106,21 @@ export class ChargesComponent implements OnInit {
         //
         break;
     }
+
+    /*this.sendChargeCalculatedEvent({
+      provider: formData.provider,
+      amount: formData.amount,
+      activeTariff: this.activeTariff
+    });*/
+  }
+
+  sendChargeCalculatedEvent(params: {provider: Provider, amount: number, activeTariff: ITariff}) {
+    this.analyticsService.eventEmitter(
+        'chargesPage',
+        'chargeCalculated',
+        `Provider: ${params.provider}, Amount: ${params.amount}, Tariff Range: ${params.activeTariff.low} - ${params.activeTariff.high}`,
+        1
+    );
   }
 
   getTariffForAmount(amount: number, tariffsList: ITariff[]) {
