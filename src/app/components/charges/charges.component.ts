@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormBuilder, FormGroup, Validators} from '@angular/forms';
-import {MoMoProvider, MoMoProviders} from '../../models/mo-mo-providers';
-import {ITariff, MtnTariffs} from '../../models/charge';
+import {MoMoProvider, moMoProviders} from '../../models/mo-mo-providers';
+import {expressUnionTariffs, ITariff, mtnTariffs, orangeTariffs} from '../../models/charge';
+import {takeWhile} from 'rxjs/operators';
 
 @Component({
   selector: 'app-charges',
@@ -16,7 +17,9 @@ export class ChargesComponent implements OnInit {
   errors: string[] = [];
   messages: string[] = [];
 
-  providers = MoMoProviders.map(provider => {
+  alive = true;
+
+  providers = moMoProviders.map(provider => {
     if (provider.value === 'mtn') {
       provider.selected = true;
     }
@@ -47,12 +50,18 @@ export class ChargesComponent implements OnInit {
 
   ngOnInit() {
     this.initForm();
+    this.form.valueChanges
+        .pipe(
+            takeWhile(_ => this.alive),
+        )
+        .subscribe(formData => this.setTariff(formData));
   }
 
   initForm() {
     this.form = this.fb.group({
       provider: [this.providers.find(provider => provider.selected).value, [Validators.required]],
       amount: ['', [Validators.required, Validators.min(100), Validators.max(1000000)]],
+      compareCharges: [false],
     });
   }
 
@@ -62,26 +71,34 @@ export class ChargesComponent implements OnInit {
   get amount() {
     return this.form.get('amount');
   }
+  get compareCharges() {
+    return this.form.get('compareCharges');
+  }
 
-  getTariff(formData) {
+  setTariff(formData) {
+    if (!this.form.valid) {
+      return;
+    }
     this.resetActiveTariff();
 
     let tariffsList: ITariff[];
     switch (formData.provider) {
       case MoMoProvider.MTN:
-        tariffsList = MtnTariffs;
+        tariffsList = mtnTariffs;
         // update the active tariff
         this.activeTariff = this.getTariffForAmount(formData.amount, tariffsList);
 
         break;
 
         case MoMoProvider.ORANGE:
-        tariffsList = MtnTariffs;
+        tariffsList = orangeTariffs;
+        this.activeTariff = this.getTariffForAmount(formData.amount, tariffsList);
         //
         break;
 
         case MoMoProvider.EU:
-        tariffsList = MtnTariffs;
+        tariffsList = expressUnionTariffs;
+        this.activeTariff = this.getTariffForAmount(formData.amount, tariffsList);
         //
         break;
     }

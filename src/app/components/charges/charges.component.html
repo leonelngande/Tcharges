@@ -1,4 +1,4 @@
-<ion-grid>
+<ion-grid no-padding>
 
   <ion-row>
     <ion-col sizeMd="3" offsetMd="4">
@@ -6,7 +6,7 @@
     </ion-col>
   </ion-row>
 
-  <form novalidate [formGroup]="form" (submit)="getTariff(form.value)">
+  <form novalidate [formGroup]="form">
 
     <div *ngIf="showMessages.error && errors && errors.length > 0 && !submitted"
          class="alert alert-danger" role="alert">
@@ -20,7 +20,7 @@
     </div>
 
     <ion-row>
-      <ion-col sizeMd="3" offsetMd="4">
+      <ion-col sizeMd="4" offsetMd="4">
         <ion-item>
           <ion-label>Provider</ion-label>
           <ion-select placeholder="Select provider" formControlName="provider">
@@ -40,7 +40,7 @@
     </ion-row>
 
     <ion-row>
-      <ion-col sizeMd="3" offsetMd="4">
+      <ion-col sizeMd="4" offsetMd="4">
         <ion-item>
           <ion-label>Amount</ion-label>
           <ion-input type="number" formControlName="amount"></ion-input>
@@ -56,23 +56,37 @@
     </ion-row>
 
     <ion-row>
-      <ion-col sizeMd="3" offsetMd="4" text-center>
-        <br>
-        <ion-button [disabled]="!form.valid || submitted"
-                    type="submit"
-                    shape="round"
-                    fill="outline">
-          Calculate
-        </ion-button>
+      <ion-col sizeMd="4" offsetMd="4">
+        <ion-item>
+          <ion-label>Compare charges?</ion-label>
+          <ion-toggle formControlName="compareCharges"></ion-toggle>
+        </ion-item>
       </ion-col>
     </ion-row>
 
-    <ion-row>
-      <ion-col sizeMd="3" offsetMd="4" text-center>
-        <app-charges-display [tariff]="activeTariff"
-                             [amount]="amount.value"
-                             [provider]="provider.value"></app-charges-display>
+    <ion-row *ngIf="form.valid">
+      <ion-col>
+        <ion-row>
+          <ion-col sizeMd="4" [offsetMd]="compareCharges.value ? 0 : 4">
+            <app-charges-display [tariff]="activeTariff"
+                                 [amount]="amount.value"
+                                 [provider]="provider.value"></app-charges-display>
+          </ion-col>
+
+          <ng-container *ngIf="compareCharges.value">
+            <ng-container *ngFor="let operator of providers">
+              <ion-col sizeMd="4" *ngIf="operator.value !== provider.value">
+                <app-charges-display [tariff]="activeTariff"
+                                     [amount]="amount.value"
+                                     [provider]="operator.value">
+
+                </app-charges-display>
+              </ion-col>
+            </ng-container>
+          </ng-container>
+        </ion-row>
       </ion-col>
+
     </ion-row>
 
   </form>

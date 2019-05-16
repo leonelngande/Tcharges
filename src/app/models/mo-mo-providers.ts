@@ -6,7 +6,7 @@ export enum MoMoProvider {
     EU = 'eu',
 }
 
-export const MoMoProviders: IDropdownOption<MoMoProvider>[] = [
+export const moMoProviders: IDropdownOption<MoMoProvider>[] = [
     {
         name: 'MTN',
         value: MoMoProvider.MTN,
@@ -17,6 +17,6 @@ export const MoMoProviders: IDropdownOption<MoMoProvider>[] = [
     },
     {
         name: 'Express Union',
-        value: MoMoProvider.ORANGE,
+        value: MoMoProvider.EU,
     },
 ];
