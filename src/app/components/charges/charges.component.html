@@ -76,7 +76,7 @@
           <ng-container *ngIf="compareCharges.value">
             <ng-container *ngFor="let operator of providers">
               <ion-col sizeMd="4" *ngIf="operator.value !== provider.value">
-                <app-charges-display [tariff]="activeTariff"
+                <app-charges-display [tariff]="getTariffForAmount(amount.value, tariffsForOperator(operator.value))"
                                      [amount]="amount.value"
                                      [provider]="operator.value">
 

@@ -36,6 +36,10 @@ export class ChargesComponent implements OnInit {
     this._activeTariff = tariff;
   }
 
+  mtnTariffs = mtnTariffs;
+  orangeTariffs = orangeTariffs;
+  expressUnionTariffs = expressUnionTariffs;
+
   validationMessages = {
     provider: [
       { type: 'required', message: 'Provider is required.' },
@@ -121,6 +125,17 @@ export class ChargesComponent implements OnInit {
         `Provider: ${params.provider}, Amount: ${params.amount}, Tariff Range: ${params.activeTariff.low} - ${params.activeTariff.high}`,
         1
     );
+  }
+
+  tariffsForOperator(provider: MoMoProvider) {
+    switch (provider) {
+      case MoMoProvider.EU:
+        return this.expressUnionTariffs;
+      case MoMoProvider.MTN:
+        return this.mtnTariffs;
+      case MoMoProvider.ORANGE:
+        return this.orangeTariffs;
+    }
   }
 
   getTariffForAmount(amount: number, tariffsList: ITariff[]) {
