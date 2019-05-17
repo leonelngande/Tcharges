@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {PopoverController} from '@ionic/angular';
+import {SharePopoverComponent} from '../components/share-popover/share-popover.component';
 
 @Component({
   selector: 'app-about',
@@ -7,9 +9,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class AboutPage implements OnInit {
 
-  constructor() { }
+  constructor(public popoverController: PopoverController) { }
 
-  ngOnInit() {
+  ngOnInit() { }
+
+  async onShare($event) {
+    const popover = await this.popoverController.create({
+      component: SharePopoverComponent,
+      event: $event,
+      translucent: true
+    });
+    return await popover.present();
   }
 
 }

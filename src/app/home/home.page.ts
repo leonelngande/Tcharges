@@ -12,7 +12,6 @@ export class HomePage {
     constructor(public popoverController: PopoverController) { }
 
     async onShare($event) {
-        console.log('popover');
         const popover = await this.popoverController.create({
             component: SharePopoverComponent,
             event: $event,
