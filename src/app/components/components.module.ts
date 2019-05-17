@@ -5,6 +5,7 @@ import {ChargesDisplayComponent} from './charges-display/charges-display.compone
 import {ReactiveFormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
 import {SharePopoverComponent} from './share-popover/share-popover.component';
+import {ShareModule} from '@ngx-share/core';
 
 const ENTRY_COMPONENTS = [
   SharePopoverComponent,
@@ -20,6 +21,7 @@ const BASE_MODULES = [
   CommonModule,
   ReactiveFormsModule,
   IonicModule,
+    ShareModule,
 ];
 
 @NgModule({

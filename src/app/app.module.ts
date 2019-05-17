@@ -11,6 +11,9 @@ import {AppRoutingModule} from './app-routing.module';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {ReactiveFormsModule} from '@angular/forms';
+import {HttpClientModule} from '@angular/common/http';
+import {ShareModule} from '@ngx-share/core';
+import {customShareButtonConfig} from './models/share-button-config';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +21,8 @@ import {ReactiveFormsModule} from '@angular/forms';
   imports: [
     BrowserModule,
       ReactiveFormsModule,
+      HttpClientModule,
+    ShareModule.withConfig(customShareButtonConfig),
     IonicModule.forRoot(),
     AppRoutingModule,
     ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
