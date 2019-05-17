@@ -11,7 +11,6 @@ import {AppRoutingModule} from './app-routing.module';
 import {ServiceWorkerModule} from '@angular/service-worker';
 import {environment} from '../environments/environment';
 import {ReactiveFormsModule} from '@angular/forms';
-import { SocialSharing } from '@ionic-native/social-sharing/ngx';
 
 @NgModule({
   declarations: [AppComponent],
@@ -26,7 +25,6 @@ import { SocialSharing } from '@ionic-native/social-sharing/ngx';
   providers: [
     StatusBar,
     SplashScreen,
-    SocialSharing,
     { provide: RouteReuseStrategy, useClass: IonicRouteStrategy }
   ],
   bootstrap: [AppComponent]
