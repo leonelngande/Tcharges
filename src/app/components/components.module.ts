@@ -4,9 +4,10 @@ import {ChargesComponent} from './charges/charges.component';
 import {ChargesDisplayComponent} from './charges-display/charges-display.component';
 import {ReactiveFormsModule} from '@angular/forms';
 import {IonicModule} from '@ionic/angular';
+import {SharePopoverComponent} from './share-popover/share-popover.component';
 
 const ENTRY_COMPONENTS = [
-  //
+  SharePopoverComponent,
 ];
 
 const COMPONENTS = [
