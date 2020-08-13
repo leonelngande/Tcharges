@@ -1,0 +1,7 @@
+{
+  "name": "feeMetrics",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
