@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <ion-title>
+      Fee Metrics
+    </ion-title>
+  </ion-toolbar>
+    <ion-toolbar color="primary">
+        <app-provider-toggle></app-provider-toggle>
+    </ion-toolbar>
+</ion-header>
+
+<ion-content padding class="app-bg">
+    <ion-list>
+        <ion-row>
+            <ion-col sizeMd="3" offsetMd="4">
+                <ion-list-header>Mobile Money Charges Calculator</ion-list-header>
+            </ion-col>
+        </ion-row>
+        <app-charges></app-charges>
+    </ion-list>
+
+</ion-content>

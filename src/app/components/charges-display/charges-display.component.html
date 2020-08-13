@@ -1,0 +1,29 @@
+<ng-container *ngIf="tariff && tariff.high && amount">
+
+  <ion-list lines="none">
+
+    <ion-item-divider>
+      <ion-label>{{provider.name}}</ion-label>
+    </ion-item-divider>
+
+    <ion-item>
+      <ion-label>
+        <img class="provider-image" [src]="provider.logo" [alt]="provider.name"> <ion-icon class="direction-display" name="arrow-forward"></ion-icon> <img class="provider-image" [src]="provider.logo" [alt]="provider.name">
+      </ion-label>
+      {{tariff.intra.value(amount) | number}} &nbsp;<small>XAF</small>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>
+        <img class="provider-image" [src]="provider.logo" [alt]="provider.name"> <ion-icon class="direction-display" name="arrow-forward"></ion-icon> Other
+      </ion-label>
+      {{tariff.inter.value(amount) | number}} &nbsp;<small>XAF</small>
+    </ion-item>
+
+    <ion-item>
+      <ion-label>Withdrawal</ion-label>
+      {{tariff.withdrawal.value(amount) | number}} &nbsp;<small>XAF</small>
+    </ion-item>
+  </ion-list>
+
+</ng-container>
