@@ -1,67 +1,57 @@
-import {Component, OnInit, ViewChild} from '@angular/core';
-import {NgForm} from '@angular/forms';
+import {Component, OnDestroy, OnInit} from '@angular/core';
 import {MobileMoneyProvider, mobileMoneyProviders} from '../../models/mobile-money-providers';
 import {Tariff} from '../../models/charge';
-import {combineLatest} from 'rxjs';
+import {combineLatest, Subject} from 'rxjs';
 import {ProviderStorage} from '../../services/provider-storage.service';
-import {tap} from 'rxjs/operators';
+import {takeUntil, tap} from 'rxjs/operators';
+import {findTariffForAmount} from '../../helpers/find-tariff-for-amount';
+import {AmountStorage} from '../../services/amount-storage.service';
+import {CanCompareChargesStorage} from '../../services/can-compare-charges-storage.service';
 
 @Component({
   selector: 'app-charges',
   templateUrl: './charges.component.html',
   styleUrls: ['./charges.component.scss'],
 })
-export class ChargesComponent implements OnInit {
+export class ChargesComponent implements OnInit, OnDestroy {
 
   providers: MobileMoneyProvider[] = mobileMoneyProviders;
   selectedProvider: MobileMoneyProvider;
+  amount: number;
+  compareCharges: boolean;
 
-  formModel: {amount: number, canCompareCharges: boolean} = {
-    amount: null,
-    canCompareCharges: false,
-  };
-
-  private activeTariff: Tariff;
-
-  validationMessages = {
-    provider: [
-      { type: 'required', message: 'Provider is required.' },
-    ],
-    amount: [
-      { type: 'required', message: 'Amount is required.' },
-      { type: 'min', message: 'Mobile Money transfers have a current lower limit of 100.' },
-      { type: 'max', message: 'Mobile Money transfers have a current upper limit of 1,000,000.' },
-    ],
-  };
-
-  alive = true;
-
-  @ViewChild(NgForm) form: NgForm;
+  private destroy$ = new Subject<void>();
 
   constructor(
       // public analyticsService: GoogleAnalyticsService,
       private providerStorage: ProviderStorage,
+      private amountStorage: AmountStorage,
+      private canCompareChargesStorage: CanCompareChargesStorage,
   ) { }
 
   async ngOnInit() {
     await this.providerStorage.getProvider();
-    combineLatest([this.providerStorage.providerName$, this.form.valueChanges])
+    combineLatest([
+        this.providerStorage.providerName$,
+      this.amountStorage.amount$,
+      this.canCompareChargesStorage.canCompareCharges$
+    ])
         .pipe(
-            tap(([providerName, formData]) => {
+            tap(([providerName, amount, compareCharges]) => {
               this.selectedProvider = this.providers.find(item => item.name === providerName);
+              this.amount = amount;
+              this.compareCharges = compareCharges;
 
-              if (this.form && this.form.valid && this.selectedProvider) {
-                this.setTariff(formData.amount, this.selectedProvider);
+              if (amount && this.selectedProvider) {
+                this.setTariff(amount, this.selectedProvider);
               }
             }),
+            takeUntil(this.destroy$),
         ).subscribe();
   }
 
   setTariff(amount: number, selectedProvider: MobileMoneyProvider) {
-    console.log(amount, selectedProvider.name);
-    this.resetActiveTariff();
-
-    this.activeTariff = this.getTariffForAmount(amount, selectedProvider.supportedCountries[0].tariffs);
+    // console.log(amount, selectedProvider.name);
 
     /*this.sendChargeCalculatedEvent({
       provider: formData.provider,
@@ -79,13 +69,11 @@ export class ChargesComponent implements OnInit {
     );
   }*/
 
-  getTariffForAmount(amount: number, tariffsList: Tariff[]) {
-    return tariffsList.find(tariff => {
-      return amount >= tariff.low && amount <= tariff.high;
-    });
+  findTariff(amount: number, tariffs: Tariff[]) {
+    return findTariffForAmount(amount, tariffs);
   }
 
-  private resetActiveTariff() {
-    this.activeTariff = null;
+  ngOnDestroy(): void {
+    this.destroy$.next();
   }
 }

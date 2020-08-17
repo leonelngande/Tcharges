@@ -24,7 +24,7 @@ export class AppComponent implements OnInit {
     {
       title: 'About',
       url: '/about',
-      icon: 'information-circle-outline'
+      icon: 'information-circle'
     },
     /*{
       title: 'List',
@@ -32,7 +32,7 @@ export class AppComponent implements OnInit {
       icon: 'info'
     },*/
   ];
-  public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
+  // public labels = ['Family', 'Friends', 'Notes', 'Work', 'Travel', 'Reminders'];
 
   constructor(
     private platform: Platform,

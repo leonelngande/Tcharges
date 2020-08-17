@@ -8,7 +8,7 @@ import {BehaviorSubject} from 'rxjs';
 })
 export class ProviderStorage {
 
-  private storageKey = 'provider_name';
+  private storageKey = 'tcharges_provider_name';
 
   private providerName: BehaviorSubject<MobileMoneyProviderName> = new BehaviorSubject(null);
   public providerName$ = this.providerName.asObservable();

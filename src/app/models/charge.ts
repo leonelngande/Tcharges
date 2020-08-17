@@ -8,15 +8,18 @@ export interface TariffCharge {
 export interface Tariff {
     low: number;
     high: number;
+    fee: number;
+    feeType: FeeType;
     /** Intra network charge */
-    intra: TariffCharge;
+    // intra: TariffCharge;
     /** Inter network charge */
-    inter: TariffCharge;
+    // inter: TariffCharge;
     /** Withdrawal charge */
-    withdrawal: TariffCharge;
+    // withdrawal: TariffCharge;
 }
 
 export type TariffChargeType = 'fixed' | 'percentage' | 'free' | 'unknown';
+export type FeeType = 'fixed' | 'percentage' | 'free' | 'unknown';
 
 export const percentCharge = (percentage: number): TariffCharge => {
     return {
@@ -38,6 +41,23 @@ export const unknownCharge = (): TariffCharge => {
         type: 'unknown',
         value: (amount) => null,
     };
+};
+
+export const resolveFeeForTariff = (tariff: Tariff, amount) => {
+    switch (tariff.feeType) {
+        case 'percentage':
+            const computedPercentage = tariff.fee / 100;
+            return (computedPercentage * amount) + ' XAF';
+
+        case 'fixed':
+            return tariff.fee + ' XAF';
+
+        case 'free':
+            return 'FREE';
+
+        case 'unknown':
+            return 'N/A';
+    }
 };
 
 

@@ -109,11 +109,28 @@ ion-menu.ios ion-note {
 
 ion-note {
   display: inline-block;
-  font-size: 16px;
+  // font-size: 16px;
 
   color: var(--ion-color-medium-shade);
 }
 
 ion-item.selected {
   --color: var(--ion-color-primary);
+}
+
+.created-by {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+
+  ion-icon {
+    vertical-align: middle;
+  }
+  a {
+    color: inherit;
+  }
+}
+
+ion-note.created-by {
+  margin-bottom: 0!important;
 }

@@ -1,0 +1,15 @@
+<ion-searchbar placeholder="Amount"
+               inputmode="numeric"
+               searchIcon="cash-outline"
+               [formControl]="amountControl" (ionChange)="saveAmount($event)"
+               animated>
+
+</ion-searchbar>
+
+<div class="validation-errors">
+  <ng-container *ngFor="let validation of validationMessages">
+    <div class="error-message ion-padding-end ion-padding-start" *ngIf="amountControl.hasError(validation.type) && (amountControl.dirty || amountControl.touched)">
+      {{ validation.message }}
+    </div>
+  </ng-container>
+</div>

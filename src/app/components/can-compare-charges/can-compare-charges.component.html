@@ -1,0 +1,5 @@
+<ion-chip (click)="toggleCheckbox()">
+  <ion-icon name="checkmark-circle" *ngIf="checkbox.checked"></ion-icon>
+  <ion-label>Compare Charges</ion-label>
+</ion-chip>
+<input type='checkbox' [formControl]="control" #checkbox hidden/>

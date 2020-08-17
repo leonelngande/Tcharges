@@ -1,71 +1,29 @@
 <ion-grid no-padding>
 
-  <form>
+  <ion-row *ngIf="selectedProvider && amount">
+    <ion-col>
+      <ion-row>
+        <ion-col sizeXs="12" sizeSm="4" [offsetMd]="compareCharges ? 0 : 4">
+          <app-charges-display [amount]="amount"
+                               [provider]="selectedProvider">
 
-    <ion-row>
-      <ion-col sizeMd="4" offsetMd="4">
-        <ion-item>
-          <ion-label>Amount</ion-label>
-          <ion-input type="number"
-                     name="amount"
-                     [(ngModel)]="formModel.amount"
-                     #amountModel="ngModel"
-                     required
-                     [min]="100"
-                     [max]="1000000">
+          </app-charges-display>
+        </ion-col>
 
-          </ion-input>
-        </ion-item>
-        <div class="validation-errors">
-          <ng-container *ngFor="let validation of validationMessages.amount">
-            <div class="error-message" *ngIf="amountModel.hasError(validation.type) && (amountModel.dirty || amountModel.touched)">
-              <ion-icon name="information-circle-outline"></ion-icon> {{ validation.message }}
-            </div>
+        <ng-container *ngIf="compareCharges">
+          <ng-container *ngFor="let operator of providers">
+
+            <ion-col sizeXs="12" sizeSm="4" *ngIf="operator.name !== selectedProvider.name">
+              <app-charges-display [amount]="amount"
+                                   [provider]="operator">
+
+              </app-charges-display>
+            </ion-col>
           </ng-container>
-        </div>
-      </ion-col>
-    </ion-row>
+        </ng-container>
+      </ion-row>
+    </ion-col>
 
-    <ion-row>
-      <ion-col sizeMd="4" offsetMd="4">
-        <ion-item>
-          <ion-label>Compare charges?</ion-label>
-          <ion-toggle name="compareCharges"
-                      [(ngModel)]="formModel.canCompareCharges">
-
-          </ion-toggle>
-        </ion-item>
-      </ion-col>
-    </ion-row>
-
-    <ion-row *ngIf="form?.valid">
-      <ion-col>
-        <ion-row>
-          <ion-col sizeXs="12" sizeSm="4" [offsetMd]="formModel.canCompareCharges ? 0 : 4">
-            <app-charges-display [tariff]="activeTariff"
-                                 [amount]="formModel.amount"
-                                 [provider]="selectedProvider">
-
-            </app-charges-display>
-          </ion-col>
-
-          <ng-container *ngIf="formModel.canCompareCharges">
-            <ng-container *ngFor="let operator of providers">
-
-              <ion-col sizeXs="12" sizeSm="4" *ngIf="operator.name !== selectedProvider.name">
-                <app-charges-display [tariff]="getTariffForAmount(formModel.amount, operator.supportedCountries[0].tariffs)"
-                                     [amount]="formModel.amount"
-                                     [provider]="operator">
-
-                </app-charges-display>
-              </ion-col>
-            </ng-container>
-          </ng-container>
-        </ion-row>
-      </ion-col>
-
-    </ion-row>
-
-  </form>
+  </ion-row>
 
 </ion-grid>
