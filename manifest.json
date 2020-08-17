@@ -1,11 +1,11 @@
 {
-  "name": "MoMoCharges",
-  "short_name": "MoMoCharges",
+  "name": "Fee Metrics",
+  "short_name": "Fee Metrics",
   "theme_color": "#1976d2",
   "background_color": "#fafafa",
   "display": "standalone",
-  "scope": "/",
-  "start_url": "/",
+  "scope": ".",
+  "start_url": "./",
   "icons": [
     {
       "src": "assets/icons/android-launchericon-72-72.png",

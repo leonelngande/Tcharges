@@ -1,0 +1,14 @@
+[
+  {
+    "name":  "MTN Mobile Money",
+    "countries": ["CM"]
+  },
+  {
+    "name": "Orange Money",
+    "countries": ["CM"]
+  },
+  {
+    "name": "Express Union Mobile",
+    "countries": ["CM"]
+  }
+]
