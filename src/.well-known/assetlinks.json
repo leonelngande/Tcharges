@@ -1,0 +1,5 @@
+[{
+      "relation": ["delegate_permission/common.handle_all_urls"],
+      "target" : { "namespace": "android_app", "package_name": "app.netlify.tcharges.twa",
+                   "sha256_cert_fingerprints": ["AA:AC:61:26:52:C5:38:58:50:64:19:BE:C3:EF:6B:57:5E:95:EA:F9:CD:24:04:FF:51:0E:6A:40:6D:2B:D9:9F"] }
+    }]

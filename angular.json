@@ -31,7 +31,8 @@
                 "output": "./svg"
               },
               "src/manifest.json",
-              "src/_redirects"
+              "src/_redirects",
+              "src/.well-known"
             ],
             "styles": [
               {
@@ -116,7 +117,8 @@
                 "output": "/assets"
               },
               "src/manifest.json",
-              "src/_redirects"
+              "src/_redirects",
+              "src/.well-known"
             ]
           },
           "configurations": {
