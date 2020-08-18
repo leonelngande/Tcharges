@@ -1,6 +1,6 @@
 {
   "configVersion": 1,
-  "timestamp": 1597687610466,
+  "timestamp": 1597735042547,
   "index": "https://leonelngande.github.io/Tcharges/index.html",
   "assetGroups": [
     {
@@ -26,8 +26,8 @@
         "https://leonelngande.github.io/Tcharges/18-es5.ff88d7a9be2c944511d7.js",
         "https://leonelngande.github.io/Tcharges/19-es2015.4adf0028b16683d53606.js",
         "https://leonelngande.github.io/Tcharges/19-es5.4adf0028b16683d53606.js",
-        "https://leonelngande.github.io/Tcharges/2-es2015.693d7c9afc1b23eaa9c0.js",
-        "https://leonelngande.github.io/Tcharges/2-es5.693d7c9afc1b23eaa9c0.js",
+        "https://leonelngande.github.io/Tcharges/2-es2015.127d0652d62cbc306eff.js",
+        "https://leonelngande.github.io/Tcharges/2-es5.127d0652d62cbc306eff.js",
         "https://leonelngande.github.io/Tcharges/20-es2015.1326e2c0dcce11fb0833.js",
         "https://leonelngande.github.io/Tcharges/20-es5.1326e2c0dcce11fb0833.js",
         "https://leonelngande.github.io/Tcharges/21-es2015.9dc032469f26c0ee64a0.js",
@@ -130,8 +130,8 @@
         "https://leonelngande.github.io/Tcharges/polyfills-dom-es5.05fd1f34b5eb01b9f68b.js",
         "https://leonelngande.github.io/Tcharges/polyfills-es2015.2fe095cbe20f0edb356d.js",
         "https://leonelngande.github.io/Tcharges/polyfills-es5.5bd849651f3d2a5576bf.js",
-        "https://leonelngande.github.io/Tcharges/runtime-es2015.124ab573f136635ac2c4.js",
-        "https://leonelngande.github.io/Tcharges/runtime-es5.124ab573f136635ac2c4.js",
+        "https://leonelngande.github.io/Tcharges/runtime-es2015.bdad3271bb07e390024a.js",
+        "https://leonelngande.github.io/Tcharges/runtime-es5.bdad3271bb07e390024a.js",
         "https://leonelngande.github.io/Tcharges/styles.61fd673c8521731aadb4.css"
       ],
       "patterns": []
@@ -188,8 +188,8 @@
     "https://leonelngande.github.io/Tcharges/18-es5.ff88d7a9be2c944511d7.js": "9c83a91a23de8f9ff6282ae9c6a1149c1b2937bd",
     "https://leonelngande.github.io/Tcharges/19-es2015.4adf0028b16683d53606.js": "32a25b35ce822dd6c8d8d27ddef28931e24f212e",
     "https://leonelngande.github.io/Tcharges/19-es5.4adf0028b16683d53606.js": "3de95e2814f3349c8a07f6f29f30267d1a613bfc",
-    "https://leonelngande.github.io/Tcharges/2-es2015.693d7c9afc1b23eaa9c0.js": "1a9d984b140b1e189a1e40551c879637dda99557",
-    "https://leonelngande.github.io/Tcharges/2-es5.693d7c9afc1b23eaa9c0.js": "b649bd1f2bfa36e0c739cb3568f903f0a24a49c4",
+    "https://leonelngande.github.io/Tcharges/2-es2015.127d0652d62cbc306eff.js": "0b3be2db3415802eb82fa256ee9adf706167ee9e",
+    "https://leonelngande.github.io/Tcharges/2-es5.127d0652d62cbc306eff.js": "beffd6cee7349ae5125c0d110529f06c315aef08",
     "https://leonelngande.github.io/Tcharges/20-es2015.1326e2c0dcce11fb0833.js": "8c724bbc60f1cf2ee861c751fd3eb59f02c14e85",
     "https://leonelngande.github.io/Tcharges/20-es5.1326e2c0dcce11fb0833.js": "228ba456cf69209f02e0d04b63a5da542446ab59",
     "https://leonelngande.github.io/Tcharges/21-es2015.9dc032469f26c0ee64a0.js": "091cbb9b683a9fee7980fc94ee55fb1a261b01cf",
@@ -303,7 +303,7 @@
     "https://leonelngande.github.io/Tcharges/assets/shapes.svg": "5413e95adabcb2cb639970051f55e0ddb64ace53",
     "https://leonelngande.github.io/Tcharges/common-es2015.1b04ce0b1059b22f26f4.js": "1acbf11bb6bf5dc425fc8a27f791ad09c534ecd2",
     "https://leonelngande.github.io/Tcharges/common-es5.1b04ce0b1059b22f26f4.js": "b8f1960738d5f0f45ed268ca539fe8f61ef1d80c",
-    "https://leonelngande.github.io/Tcharges/index.html": "62a362fa0e0c6f866b64edae69af24fd55925ca9",
+    "https://leonelngande.github.io/Tcharges/index.html": "35cabf4ce76fc95329dcced3052d81ccbe61e88a",
     "https://leonelngande.github.io/Tcharges/main-es2015.37f98053b8c65f28c69f.js": "e0f73668d38e5c9ca90ceb68165e3e0455134c5f",
     "https://leonelngande.github.io/Tcharges/main-es5.37f98053b8c65f28c69f.js": "f2599ee031e4f82256b27070c2930bfd30700404",
     "https://leonelngande.github.io/Tcharges/manifest.json": "104bfa57e47d646c218b39aec8c2efde03e2ac4a",
@@ -315,8 +315,8 @@
     "https://leonelngande.github.io/Tcharges/polyfills-dom-es5.05fd1f34b5eb01b9f68b.js": "421acf316d625cce333bae48ec4e64559f334c66",
     "https://leonelngande.github.io/Tcharges/polyfills-es2015.2fe095cbe20f0edb356d.js": "02d8902d36a983bce89fe51e4321cf36af5b13ab",
     "https://leonelngande.github.io/Tcharges/polyfills-es5.5bd849651f3d2a5576bf.js": "323147dd42a0d19b2197eae76a81df6020dd85ec",
-    "https://leonelngande.github.io/Tcharges/runtime-es2015.124ab573f136635ac2c4.js": "563a8fd68888ef5b6925872eb5922c98aff0ac7c",
-    "https://leonelngande.github.io/Tcharges/runtime-es5.124ab573f136635ac2c4.js": "98ec98ac59b0e4931285eb572c7bb1b2d795085d",
+    "https://leonelngande.github.io/Tcharges/runtime-es2015.bdad3271bb07e390024a.js": "acbeabd42f053ae3ad4e024c85bf59a2d71919aa",
+    "https://leonelngande.github.io/Tcharges/runtime-es5.bdad3271bb07e390024a.js": "5b2ee800190094808999ca6693dacbd73e5c184e",
     "https://leonelngande.github.io/Tcharges/styles.61fd673c8521731aadb4.css": "3da1131111343a3ce5a821d7917f14662f3ec284"
   },
   "navigationUrls": [
