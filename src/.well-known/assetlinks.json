@@ -1,5 +1,5 @@
 [{
       "relation": ["delegate_permission/common.handle_all_urls"],
-      "target" : { "namespace": "android_app", "package_name": "app.netlify.tcharges.twa",
-                   "sha256_cert_fingerprints": ["AA:AC:61:26:52:C5:38:58:50:64:19:BE:C3:EF:6B:57:5E:95:EA:F9:CD:24:04:FF:51:0E:6A:40:6D:2B:D9:9F"] }
+      "target" : { "namespace": "android_app", "package_name": "com.leonelngande.tcharges.twa",
+                   "sha256_cert_fingerprints": ["DD:33:7A:F7:C3:55:53:F5:04:0A:B8:00:1A:61:A0:63:EF:36:9B:74:21:62:57:2D:A3:3B:30:0E:DA:1F:80:5C"] }
     }]
