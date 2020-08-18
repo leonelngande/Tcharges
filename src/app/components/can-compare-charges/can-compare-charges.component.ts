@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import {FormControl} from '@angular/forms';
 import {CanCompareChargesStorage} from '../../services/can-compare-charges-storage.service';
+import {Observable} from 'rxjs';
+import {tap} from 'rxjs/operators';
 
 @Component({
   selector: 'app-can-compare-charges',
@@ -9,13 +11,21 @@ import {CanCompareChargesStorage} from '../../services/can-compare-charges-stora
 })
 export class CanCompareChargesComponent implements OnInit {
 
-  control: FormControl;
+  control = new FormControl();
+  canCompareCharges$: Observable<boolean>;
 
   constructor(private canCompareChargesStorage: CanCompareChargesStorage) { }
 
   async ngOnInit() {
-    const canCompare = this.canCompareChargesStorage.getCanCompareCharges();
-    this.control = new FormControl(canCompare);
+    this.canCompareCharges$ = this.canCompareChargesStorage.canCompareCharges$
+        .pipe(
+            tap(res => {
+              /** If can compare charges is not set, set it to false. */
+              if (res === null) {
+                this.canCompareChargesStorage.setCanCompareCharges(false);
+              }
+            })
+        );
   }
 
   toggleCheckbox() {

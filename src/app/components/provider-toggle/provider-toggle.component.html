@@ -1,4 +1,4 @@
-<ion-segment color="secondary" [value]="selectedProviderName$ | async" (ionChange)="save($event)">
+<ion-segment color="light" [value]="selectedProviderName$ | async" (ionChange)="save($event)">
   <ion-segment-button *ngFor="let provider of providers" [value]="provider.name">
     <ion-label>
       <img class="provider-image" [src]="provider.logo" [alt]="provider.name">

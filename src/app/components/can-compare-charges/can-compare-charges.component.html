@@ -2,4 +2,4 @@
   <ion-icon name="checkmark-circle" *ngIf="checkbox.checked"></ion-icon>
   <ion-label>Compare Charges</ion-label>
 </ion-chip>
-<input type='checkbox' [formControl]="control" #checkbox hidden/>
+<input type='checkbox' [formControl]="control" [value]="canCompareCharges$ | async" #checkbox hidden/>
