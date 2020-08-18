@@ -14,6 +14,10 @@ const routes: Routes = [
   {
     path: 'about',
     loadChildren: './about/about.module#AboutPageModule'
+  },
+  {
+    path: 'privacy',
+    loadChildren: () => import('./privacy/privacy.module').then( m => m.PrivacyPageModule)
   }
 ];
 
